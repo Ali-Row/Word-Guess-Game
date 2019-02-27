@@ -1,0 +1,62 @@
+h1 {
+  font-family: 'Bangers', cursive;
+}
+
+h2 {
+  font-family: 'Bangers', cursive;
+}
+
+.img-responsive {
+  width: 1000px;
+}
+
+.jumbotron {
+  background-color: #ffffff;
+}
+
+.hangman-outer-container {
+  max-width: 100%;
+}
+
+.hangman-inner-container {
+  max-width: 670px;
+  margin: 0 auto;
+}
+
+img {
+  display: inline-block;
+  max-width: 100%;
+  height: auto;
+  width: auto;
+}
+
+.guessWord {
+  font-size: 20px;
+}
+
+.guessWord {
+  letter-spacing: 15px;
+}
+
+.well {
+  letter-spacing: 15px;
+}
+
+.messageText {
+  color: #000000;
+  font-size: 25px;
+}
+
+.generateWord {
+  background-color: #bdbdbd;
+  padding: 10px;
+  font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  margin-bottom: 15px;
+}
+
+input[type="text"] {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 20px;
+}

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Word Guess Game</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Sedgwick+Ave+Display"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/style.css" />
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Noto+Sans+KR"
+      rel="stylesheet"
+    />
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Indie+Flower"
+      rel="stylesheet"
+    />
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Bangers|Indie+Flower"
+      rel="stylesheet"
+    />
+  </head>
+  <body background="assets/images/Europa.jpg" onload="pickAWord()">
+    <div class="container-fluid">
+      <div class="hangman-outer-container">
+        <div class="hangman-inner-container">
+          <img src="assets/images/Hangman.png" />
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6 col-sm-12">
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <div class="row">
+                <div class="col-md-6 col-sm-6">
+                  <figure>
+					<figcaption>Artist: Skrillex</figcaption>
+					<img class="img-responsive" src="assets/images/hangmanImg.jpg"/>
+                  </figure>
+                </div>
+                <div class="col-md-offset-1 col-md-5 col-sm-6">
+                  <canvas id="imgCanvas" width="200" height="350"></canvas>
+                  <p id="userMessage" class="messageText"></p>
+                </div>
+              </div>
+            </div>
+            <div class="panel-footer" id="audioFrame">
+              <audio controls id="song">
+                <source
+                  src="assets/audio/skrillex-disco-rangers.mp3"
+                  type="audio/mpeg"
+                />
+              </audio>
+              <div class="attribution-block">
+                <a href="https://www.youtube.com/watch?v=vXhmyyXFd5I"
+                  >Disco Rangers</a
+                >
+                by Skrillex (c) copyright 2011
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="text-center col-md-6 col-sm-12">
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <h1>Press any key to get started!</h1>
+              <h2>Wins:</h2>
+              <p id="totalWins"></p>
+              <h2>Current Word</h2>
+              <p id="currentWord" class="guessWord"></p>
+              <h2>Number of Guesses Remaining:</h2>
+              <p id="numberOfGuesses"></p>
+              <h2>Letters Already Guessed</h2>
+              <div class="well" id="lettersGuessed"></div>
+              <button id="nextWord" class="generateWord">New Word</button>
+              <p id="dispMessage"></p>
+            
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="assets/javascript/game.js"></script>
+  </body>
+</html>
