@@ -7,7 +7,6 @@ var displayMessage = document.getElementById("dispMessage");
 var playAudio = document.getElementById("audioFrame");
 var audioFile = document.getElementById("song");
 var pickWord = document.getElementById("nextWord");
-
 		
 var drawCanvas = document.getElementById("imgCanvas");
 if (drawCanvas.getContext) {
@@ -86,6 +85,7 @@ function checkUserInput(userInput) {
 	curWord.innerHTML = "<span>" + selectedWord + "</span>";
 	if(selectedWord.join("") === wordChoice) {
 		gameMessage.innerHTML = "<strong>You Win!</strong>";
+        
 		audioFile.src = "assets/audio/skrillex-disco-rangers.mp3";
       	audioFile.type = "mp3";
       	audioFile.play();
