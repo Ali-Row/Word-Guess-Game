@@ -4,8 +4,8 @@ let lettersUsed = document.getElementById("lettersGuessed");
 let countGuess = document.getElementById("numberOfGuesses");
 let gameMessage = document.getElementById("userMessage");
 let displayMessage = document.getElementById("dispMessage");
-let playAudio = document.getElementById("audioFrame");
-let audioFile = document.getElementById("song");
+// let playAudio = document.getElementById("audioFrame");
+// let audioFile = document.getElementById("song");
 let pickWord = document.getElementById("nextWord");
 		
 // Declare variables for wins, remaining guesses, user choice
@@ -40,7 +40,7 @@ function pickAWord() {
 
 // onkeyup function captures the users keyboard input
 document.onkeyup = function(event) {
-	audioFile.pause();
+	// audioFile.pause();
 	userChoice = (String.fromCharCode(event.keyCode)).toLowerCase();
 	if(lettersGuessed.indexOf(userChoice) === -1) {
     	lettersGuessed.push(userChoice);
@@ -52,9 +52,9 @@ document.onkeyup = function(event) {
 	    countGuess.innerHTML = "<strong>" + remainingGuess + "</strong>";
 	    if(remainingGuess === 0 && selectedWord.join("") !== wordChoice) { 
 	    	gameMessage.innerHTML = "<strong>Out of guesses!</strong>";
-	    	audioFile.src = "assets/audio/lose-sound.mp3";
-	    	audioFile.type = "audio/mpeg"
-	    	audioFile.play();
+	    	// audioFile.src = "assets/audio/lose-sound.mp3";
+	    	// audioFile.type = "audio/mpeg"
+	    	// audioFile.play();
 	    	pickAWord();
 	    }
 	}else {
@@ -75,16 +75,16 @@ function checkUserInput(userInput) {
 	if(selectedWord.join("") === wordChoice) {
 		gameMessage.innerHTML = "<strong>You Win!</strong>";
         
-		audioFile.src = "assets/audio/skrillex-disco-rangers.mp3";
-      	audioFile.type = "mp3";
-      	audioFile.play();
+		// audioFile.src = "assets/audio/skrillex-disco-rangers.mp3";
+      	// audioFile.type = "mp3";
+      	// audioFile.play();
       	pickAWord();
     }
 }
 
 // Event listener for the next word button
 pickWord.addEventListener('click', function() {
-	audioFile.pause();
+	// audioFile.pause();
 	pickAWord();
 });
 
