@@ -4,12 +4,15 @@ let lettersUsed = document.getElementById("lettersGuessed");
 let countGuess = document.getElementById("numberOfGuesses");
 let gameMessage = document.getElementById("userMessage");
 let displayMessage = document.getElementById("dispMessage");
+let displayWins = document.getElementById("wins");
+let displayLosses = document.getElementById("losses");
 // let playAudio = document.getElementById("audioFrame");
 // let audioFile = document.getElementById("song");
 let pickWord = document.getElementById("nextWord");
 		
 // Declare variables for wins, remaining guesses, user choice
 let wins = 0;
+let losses = 0;
 let remainingGuess = 12;
 let wordChoice;
 let pick;
@@ -51,7 +54,9 @@ document.onkeyup = function(event) {
 	    }
 	    countGuess.innerHTML = "<strong>" + remainingGuess + "</strong>";
 	    if(remainingGuess === 0 && selectedWord.join("") !== wordChoice) { 
-	    	gameMessage.innerHTML = "<strong>Out of guesses!</strong>";
+			gameMessage.innerHTML = "<strong>Out of guesses!</strong>";
+			losses++;
+		    displayLosses.innerText = "Losses: " + losses;
 	    	// audioFile.src = "assets/audio/lose-sound.mp3";
 	    	// audioFile.type = "audio/mpeg"
 	    	// audioFile.play();
@@ -74,7 +79,8 @@ function checkUserInput(userInput) {
 	curWord.innerHTML = "<span>" + selectedWord + "</span>";
 	if(selectedWord.join("") === wordChoice) {
 		gameMessage.innerHTML = "<strong>You Win!</strong>";
-        
+		wins++;
+		displayWins.innerText = "Wins: " + wins;
 		// audioFile.src = "assets/audio/skrillex-disco-rangers.mp3";
       	// audioFile.type = "mp3";
       	// audioFile.play();
