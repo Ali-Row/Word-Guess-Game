@@ -18,9 +18,7 @@ let wordChoice;
 let pick;
 let pos;
 let userChoice;
-		
-countGuess.innerHTML = "<strong>" + remainingGuess + "</strong>";
-		
+			
 // Declare arrays for word list and letters guessed by user
 let wordList = ["Strong", "Heavy", "Music", "Funny", "Simple", "Car", "Pencil", "Guess", "Pickle", "Portfolio", "Outbreak", "Table", "Fable", "Mystery", "Maximum", "Amazing"];
 let lettersGuessed = [];
@@ -32,7 +30,7 @@ function pickAWord() {
 	resetVariables();
 	pick = Math.floor(Math.random() * wordList.length);
 	wordChoice = wordList[pick].toLowerCase();
-	countGuess.innerHTML = "<strong>" + remainingGuess + "</strong>";
+	countGuess.innerHTML = "Guesses left: " + remainingGuess;
 	pos = wordList.indexOf(wordList[pick]);
 	wordList.splice(pos, 1);
 	for(let i = 0; i < wordChoice.length; i++) {
@@ -52,7 +50,7 @@ document.onkeyup = function(event) {
 	    if(remainingGuess > 0 && selectedWord.join("") !== wordChoice && lettersGuessed.length !== 0) {
 	    	remainingGuess--;
 	    }
-	    countGuess.innerHTML = "<strong>" + remainingGuess + "</strong>";
+		countGuess.innerHTML = "Guesses left: " + remainingGuess;
 	    if(remainingGuess === 0 && selectedWord.join("") !== wordChoice) { 
 			gameMessage.innerHTML = "<strong>Out of guesses!</strong>";
 			losses++;
@@ -78,7 +76,6 @@ function checkUserInput(userInput) {
 	}
 	curWord.innerHTML = "<span>" + selectedWord + "</span>";
 	if(selectedWord.join("") === wordChoice) {
-		gameMessage.innerHTML = "<strong>You Win!</strong>";
 		wins++;
 		displayWins.innerText = "Wins: " + wins;
 		// audioFile.src = "assets/audio/skrillex-disco-rangers.mp3";
