@@ -8,3 +8,4 @@ This is my version of the game hangman, I made this while attending the Universi
 The game is very simple, you have to guess the word correctly before you run out of guesses, your keyboard input is grabbed by default so all you've got to do is type!
   
   
+  
