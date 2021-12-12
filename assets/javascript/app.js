@@ -5,6 +5,7 @@ let guessesLeft = 0;
 const words = ["test", "amazing", "unbelievable", "cool", "yes"];
 let userGuesses = "";
 let hiddenWord = [];
+let canType = true;
 
 
 const buildHiddenWord = () => {
@@ -33,6 +34,7 @@ const renderNewWord = () => {
     checkGameOver();
     buildHiddenWord();
     renderWord();
+    canType = true;
 }
 
 const nextWord = () => {
@@ -40,8 +42,8 @@ const nextWord = () => {
     renderNewWord();
 }
 
-const renderInfo = (selector, message) => {
-    let displayInfo = document.querySelector(selector);
+const renderInfo = (cssSelector, message) => {
+    let displayInfo = document.querySelector(cssSelector);
     displayInfo.textContent = "";
     displayInfo.textContent = message;
 }
@@ -64,11 +66,22 @@ const checkLetter = (letter) => {
 
 document.onkeyup = function(e) {
     let currentWord = words[wordIndex];
+    console.log(hiddenWord);
+    let userWord = hiddenWord.join("");
+    if (currentWord === userWord) {
+        if (canType) {
+            wins++;
+            renderInfo(".display-wins", "Wins: " + wins);
+            canType = false;
+        }
+        return
+    }
+
     if (guessesLeft === 1) {
         losses++;
         renderInfo(".display-losses", "Losses: " + losses);
     } else if (guessesLeft === 0) {
-        return alert("Out of guesses!");
+        alert("Out of guesses!");
     }
 
     guessesLeft--;
@@ -76,11 +89,6 @@ document.onkeyup = function(e) {
     let userGuess = e.key;
     userGuesses += userGuess;
     checkLetter(userGuess);
-    
-    if (currentWord === hiddenWord.join("")) {
-        wins++;
-        renderInfo(".display-wins", "Wins: " + wins);
-    }
 }
 
 const startGame = () => {
