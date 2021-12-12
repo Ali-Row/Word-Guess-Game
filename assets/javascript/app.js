@@ -6,9 +6,10 @@ const words = ["test", "amazing", "unbelievable", "cool", "yes"];
 let userGuesses = "";
 let hiddenWord = [];
 
+
 const buildHiddenWord = () => {
-    hiddenWord = [];
     let currentWord = words[wordIndex];
+    hiddenWord = [];
     for (let i = 0; i < currentWord.length; i++) {
         hiddenWord.push("_");
     } 
@@ -25,7 +26,6 @@ const checkGameOver = () => {
     if (wordIndex === words.length) {
         alert("Game Over!");
         resetGame();
-        startGame();
     }
 }
  
@@ -33,6 +33,11 @@ const renderNewWord = () => {
     checkGameOver();
     buildHiddenWord();
     renderWord();
+}
+
+const nextWord = () => {
+    wordIndex++;
+    renderNewWord();
 }
 
 const renderInfo = (selector, message) => {
@@ -43,13 +48,18 @@ const renderInfo = (selector, message) => {
 
 const checkLetter = (letter) => {
     let currentWord = words[wordIndex];
-    for (let i = 0; i < currentWord.length; i++) {
 
-        if (currentWord[i].toLowerCase() === letter.toLowerCase()) {
-            hiddenWord[i] = letter.toLowerCase();
+     for (let i in currentWord) {
+        const char = currentWord[i].toLowerCase();
+        const userGuess = letter.toLowerCase();
+
+        if (char === userGuess) {
+            let nextWordBtn = document.querySelector(".next-word-btn");
+            nextWordBtn.classList.remove("hide");
+            hiddenWord[i] = userGuess;
             renderWord();
         }
-    };
+    }
 }
 
 document.onkeyup = function(e) {
@@ -57,9 +67,9 @@ document.onkeyup = function(e) {
     if (guessesLeft === 1) {
         losses++;
         renderInfo(".display-losses", "Losses: " + losses);
-        wordIndex++;
-        renderNewWord()
-    } 
+    } else if (guessesLeft === 0) {
+        return alert("Out of guesses!");
+    }
 
     guessesLeft--;
     renderInfo(".display-guesses", "Guesses Left: " + guessesLeft);
@@ -70,8 +80,6 @@ document.onkeyup = function(e) {
     if (currentWord === hiddenWord.join("")) {
         wins++;
         renderInfo(".display-wins", "Wins: " + wins);
-        wordIndex++;
-        renderNewWord();
     }
 }
 
@@ -81,8 +89,7 @@ const startGame = () => {
     startContainer.classList.add("hide");
     gameContainer.classList.remove("hide");
 
-    buildHiddenWord();
-    renderWord();
+    renderNewWord();
     renderInfo(".display-wins", "Wins: " + wins);
     renderInfo(".display-losses", "Losses: " + losses);
     renderInfo(".display-guesses", "Guesses Left: " + guessesLeft);
@@ -93,4 +100,7 @@ const resetGame = () => {
 }
 
 let startBtn = document.querySelector(".start-btn");
+let nextWordBtn = document.querySelector(".next-word-btn");
+
 startBtn.addEventListener("click", startGame);
+nextWordBtn.addEventListener("click", nextWord);
