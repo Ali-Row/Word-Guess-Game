@@ -3,7 +3,7 @@ let wins = 0;
 let losses = 0;
 let wordIndex = 0;
 let guessesLeft = 0;
-const words = ["test", "amazing", "unbelievable", "cool", "yes"];
+const words = ["test", "amazing", "unbelievable", "cool", "yes", "scene", "tragedy"];
 let userGuesses = "";
 let hiddenWord = [];
 let canType = true;
@@ -11,7 +11,6 @@ let canType = true;
 let startBtn = document.querySelector(".start-btn");
 let nextWordBtn = document.querySelector(".next-word-btn");
 let displayWord = document.querySelector(".display-word");
-
 
 const buildHiddenWord = () => {
     let currentWord = words[wordIndex];
@@ -43,15 +42,14 @@ const checkLetter = (letter) => {
         const userGuess = letter.toLowerCase();
 
         if (char === userGuess) {
-            let nextWordBtn = document.querySelector(".next-word-btn");
-            nextWordBtn.classList.remove("hide");
             hiddenWord[i] = userGuess;
-            renderWord();
+            renderInfo(".display-word", hiddenWord.join(""))
         }
     }
 }
 
 const runUserGuess = (e) => {
+    nextWordBtn.classList.remove("hide");
     let userGuess = e.key;
     userGuesses += userGuess;
     checkLetter(userGuess);
@@ -92,7 +90,3 @@ const resetGame = () => {
     window.location.reload();
 }
 
-// Click handlers
-startBtn.addEventListener("click", startGame);
-nextWordBtn.addEventListener("click", nextWord);
-document.onkeyup = e => canType ? runUserGuess(e) : "";
