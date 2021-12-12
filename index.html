@@ -1,58 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Word Guess Game</title>
-    <link
-      rel="stylesheet"
-      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-    />
-    <link
-      href="https://fonts.googleapis.com/css?family=Sedgwick+Ave+Display"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="assets/css/style.css" />
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Hangman</title>
+</head>
+<body>
 
-    <link
-      href="https://fonts.googleapis.com/css?family=Noto+Sans+KR"
-      rel="stylesheet"
-    />
-
-    <link
-      href="https://fonts.googleapis.com/css?family=Indie+Flower"
-      rel="stylesheet"
-    />
-
-    <link
-      href="https://fonts.googleapis.com/css?family=Bangers|Indie+Flower"
-      rel="stylesheet"
-    />
-  </head>
-  <body background="assets/images/grass.jpg" onload="pickAWord()">
-    <div class="container-fluid">
-      <div class="hangman-outer-container">
-        <div class="hangman-inner-container">
-          <img src="assets/images/Hangman.png" />
+    <div class="game-container hide">
+        <div class="info-container">
+            <h3 class="info display-wins"></h3>
+            <h3 class="info display-losses"></h3>
+            <h3 class="info display-guesses"></h3>
         </div>
-      </div>
-      <div class="row">
-        <div class="text-center col-md-12">
-          <div class="panel panel-default">
-                <h1>Press any key to get started!</h1>
-                <h2 id="wins">Wins: 0</h2>
-                <h2 id="losses">Losses: 0</h2>
-                <h2>Current Word</h2>
-                <p id="currentWord" class="guessWord"></p>
-                <h2 id="numberOfGuesses">Number of Guesses Remaining: 12</h2>
-                <h2>Letters Already Guessed</h2>
-                <div class="well" id="lettersGuessed"></div>
-                <button id="nextWord" class="generateWord">New Word</button>
-                <p id="dispMessage"></p>
-                <p id="userMessage"></p>
-          </div>
-        </div>
-      </div>
+        
+        <h1 class="display-word"></h1>
     </div>
-    <script src="assets/javascript/game.js"></script>
-  </body>
+
+    <div class="start-container">
+        <h1 class="click-below-msg">Click below to begin</h1>
+        <button class="start-btn">Start Game</button>
+    </div>
+
+    <script src="hang.js"></script>
+    
+</body>
 </html>
