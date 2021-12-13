@@ -1,5 +1,5 @@
 // Globals
-const words = ["awesome", "amazing", "unbelievable", "cool", "yes", "scene", "tragedy"];
+const words = ["awesome", "amazing", "unbelievable", "cool", "yes", "scene", "tragedy", "stump", "round", "turbo"];
 let wins = 0;
 let losses = 0;
 let wordIndex = 0;
@@ -18,7 +18,8 @@ const buildHiddenWord = () => {
     for (each of currentWord) {
         hiddenWord.push("_");
     } 
-    guessesLeft = hiddenWord.length + 4;
+    guessesLeft = hiddenWord.length + 3;
+    renderInfo(".display-guesses", `Guesses Left: ${guessesLeft}`);
 }
 
 const checkGameOver = () => {
@@ -26,6 +27,8 @@ const checkGameOver = () => {
         setTimeout(() => renderInfo(".display-word", "Game Over!"), 500);
         setTimeout(() => nextWordBtn.textContent = "Restart", 500);
         nextWordBtn.addEventListener("click", resetGame);
+        renderInfo(".display-guesses", "");
+        renderInfo(".display-guessed-letters", "");
     }
 }
 
@@ -77,8 +80,17 @@ const runUserGuess = (e) => {
         return setTimeout(() => renderInfo(".display-word", "Out of Guesses!"), 1500);
     } 
     guessesLeft--;
-    renderInfo(".display-guesses", "Guesses Left: " + guessesLeft);
+    renderInfo(".display-guesses", `Guesses Left: ${guessesLeft}`);
 } 
+
+const shuffleArray = (array) => {
+    for (let i = array.length - 1; i > 0; i--) {
+        let randIndex = Math.floor(Math.random() * (i + 1));
+        let temp = array[i];
+        array[i] = array[randIndex];
+        array[randIndex] = temp;
+    }
+}
 
 const startGame = () => {
     let startContainer = document.querySelector(".start-container");
@@ -86,6 +98,7 @@ const startGame = () => {
     startContainer.classList.add("hide");
     gameContainer.classList.remove("hide");
 
+    shuffleArray(words);
     renderNewWord();
     renderInfo(".display-wins", `Wins: ${wins}`);
     renderInfo(".display-losses", `Losses: ${losses}`);

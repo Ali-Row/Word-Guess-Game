@@ -17,6 +17,10 @@ body {
     font-family: 'Gloria Hallelujah', cursive;
     font-size: 4rem;
 }
+.display-guessed-letters {
+    font-family: 'Cabin', sans-serif;
+    letter-spacing: .08rem;
+}
 .info-container {
     display: flex;
     flex-wrap: wrap;
