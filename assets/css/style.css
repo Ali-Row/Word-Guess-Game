@@ -19,8 +19,19 @@ body {
 }
 .info-container {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
+}
+.left-info-container {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+}
+.right-info-container {
+    display: flex;
+    align-items: center;
+    justify-content: end;
 }
 .text-center {
     text-align: center;

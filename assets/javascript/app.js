@@ -1,9 +1,9 @@
 // Globals
+const words = ["awesome", "amazing", "unbelievable", "cool", "yes", "scene", "tragedy"];
 let wins = 0;
 let losses = 0;
 let wordIndex = 0;
 let guessesLeft = 0;
-const words = ["test", "amazing", "unbelievable", "cool", "yes", "scene", "tragedy"];
 let userGuesses = "";
 let hiddenWord = [];
 let canType = true;
@@ -32,6 +32,9 @@ const checkGameOver = () => {
 const nextWord = () => {
     wordIndex++;
     renderNewWord();
+    renderInfo(".display-round", `Round ${wordIndex + 1} of ${words.length}`);
+    userGuesses = "";
+    renderInfo(".display-guessed-letters", "");
 }
 
 const checkLetter = (letter) => {
@@ -52,6 +55,10 @@ const runUserGuess = (e) => {
     nextWordBtn.classList.remove("hide");
     let userGuess = e.key;
     userGuesses += userGuess;
+    let guessedLetters = new Set(userGuesses);
+
+    renderInfo(".display-guessed-letters", `Guessed Letters: ${[...guessedLetters]}`);
+
     checkLetter(userGuess);
     let currentWord = words[wordIndex];
     let userWord = hiddenWord.join("");
@@ -59,17 +66,16 @@ const runUserGuess = (e) => {
     if (currentWord === userWord) {
         canType = false;
         wins++;
-        renderInfo(".display-wins", "Wins: " + wins);
+        renderInfo(".display-wins", `Wins: ${wins}`);
         setTimeout(() => renderInfo(".display-word", "You Won!"), 1000);
     } else if (guessesLeft === 1) {
         canType = false;
         losses++;
-        renderInfo(".display-losses", "Losses: " + losses);
-        renderInfo(".display-guesses", "Guesses Left: " + 0);
+        renderInfo(".display-losses", `Losses: ${losses}`);
+        renderInfo(".display-guesses", `Guesses Left: ${0}`);
         setTimeout(() => renderInfo(".display-word", "You Lose!"), 500);
         return setTimeout(() => renderInfo(".display-word", "Out of Guesses!"), 1500);
-    }
-
+    } 
     guessesLeft--;
     renderInfo(".display-guesses", "Guesses Left: " + guessesLeft);
 } 
@@ -81,9 +87,10 @@ const startGame = () => {
     gameContainer.classList.remove("hide");
 
     renderNewWord();
-    renderInfo(".display-wins", "Wins: " + wins);
-    renderInfo(".display-losses", "Losses: " + losses);
-    renderInfo(".display-guesses", "Guesses Left: " + guessesLeft);
+    renderInfo(".display-wins", `Wins: ${wins}`);
+    renderInfo(".display-losses", `Losses: ${losses}`);
+    renderInfo(".display-guesses", `Guesses Left: ${guessesLeft}`);
+    renderInfo(".display-round", `Round ${wordIndex + 1} of ${words.length}`);
 }
 
 const resetGame = () => {
