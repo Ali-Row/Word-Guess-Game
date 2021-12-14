@@ -13,9 +13,12 @@ body {
     color: white;
     overflow-x: hidden;
 }
+.hangman-logo {
+    max-width: 50%;
+}
 .click-below-msg {
     font-family: 'Gloria Hallelujah', cursive;
-    font-size: 4rem;
+    font-size: 2.5rem;
 }
 .display-guessed-letters {
     font-family: 'Cabin', sans-serif;
@@ -46,7 +49,7 @@ body {
     align-items: center;
     vertical-align: center;
     justify-content: center;
-    margin-top: 10%;
+    margin-top: 5%;
 }
 .info {
     padding: 1rem;

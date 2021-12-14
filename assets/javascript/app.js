@@ -6,11 +6,14 @@ let wordIndex = 0;
 let guessesLeft = 0;
 let userGuesses = "";
 let hiddenWord = [];
-let canType = true;
+let canType = false;
 
 let startBtn = document.querySelector(".start-btn");
 let nextWordBtn = document.querySelector(".next-word-btn");
 let displayWord = document.querySelector(".display-word");
+
+const winSound = new Audio('assets/audio/win-sound.wav');
+const loseSound = new Audio('assets/audio/lose-sound.wav');
 
 const buildHiddenWord = () => {
     let currentWord = words[wordIndex];
@@ -24,8 +27,8 @@ const buildHiddenWord = () => {
 
 const checkGameOver = () => {
     if (wordIndex === words.length) {
-        setTimeout(() => renderInfo(".display-word", "Game Over!"), 500);
-        setTimeout(() => nextWordBtn.textContent = "Restart", 500);
+        renderInfo(".display-word", "Game Over!");
+        nextWordBtn.textContent = "Restart";
         nextWordBtn.addEventListener("click", resetGame);
         renderInfo(".display-guesses", "");
         renderInfo(".display-guessed-letters", "");
@@ -71,13 +74,15 @@ const runUserGuess = (e) => {
         wins++;
         renderInfo(".display-wins", `Wins: ${wins}`);
         setTimeout(() => renderInfo(".display-word", "You Won!"), 1000);
+        setTimeout(() => winSound.play(), 1000);
     } else if (guessesLeft === 1) {
         canType = false;
         losses++;
         renderInfo(".display-losses", `Losses: ${losses}`);
         renderInfo(".display-guesses", `Guesses Left: ${0}`);
         setTimeout(() => renderInfo(".display-word", "You Lose!"), 500);
-        return setTimeout(() => renderInfo(".display-word", "Out of Guesses!"), 1500);
+        setTimeout(() => loseSound.play(), 1000);
+        return setTimeout(() => renderInfo(".display-word", "Out of Guesses!"), 1000);
     } 
     guessesLeft--;
     renderInfo(".display-guesses", `Guesses Left: ${guessesLeft}`);
@@ -97,6 +102,7 @@ const startGame = () => {
     let gameContainer = document.querySelector(".game-container");
     startContainer.classList.add("hide");
     gameContainer.classList.remove("hide");
+    canType = true;
 
     shuffleArray(words);
     renderNewWord();
