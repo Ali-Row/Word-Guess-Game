@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="https://upload.wikimedia.org/wikipedia/commons/6/68/HangingMan.png" type="image/x-icon">
     <link rel="stylesheet" href="assets/css/style.css">
     <title>Hangman</title>
 </head>
@@ -12,26 +13,26 @@
     <div class="game-container hide">
         
 
-        <div class="info-container">
+        <main class="info-container">
 
-            <div class="left-info-container">
+            <section class="left-info-container">
                 <h3 class="info display-round">Round 1 of 10</h3>
-            </div>
+            </section>
 
-            <div class="right-info-container">
+            <section class="right-info-container">
                 <h3 class="info display-wins"></h3>
                 <h3 class="info display-losses"></h3>
                 <h3 class="info display-guesses"></h3>
                 <button class="btn-sm next-word-btn hide">Next Word</button>
-            </div>
-        </div>
+            </section>
+        </main>
         
         <h1 class="display-word"></h1>
         <h2 class="text-center display-guessed-letters"></h2>
     </div>
 
     <div class="start-container">
-        <img class="hangman-logo" src="assets/images/Hangman.png" alt="Logo">
+        <img class="hangman-logo" src="assets/images/Hangman.png" alt="Hangman Logo">
         <h1 class="click-below-msg">Click below to begin</h1>
         <button class="btn start-btn">Start Game</button>
     </div>

@@ -97,6 +97,9 @@ body {
     animation: fadeInUp;
     animation-duration: 1.5s;
 }
+.btn-sm:hover {
+    transform: scale(1.05);
+}
 @keyframes fadeInUp {
     from {
         opacity: 0;
@@ -107,9 +110,23 @@ body {
         margin-top: 0rem;
     }
 }
-.btn-sm:hover {
-    transform: scale(1.05);
-}
 .hide {
     display: none;
+}
+
+@media screen and (max-width: 800px) {
+    .hangman-logo {
+        max-width: 80%;
+    }
+    .click-below-msg {
+        font-family: var(--secondary-font);
+        font-size: 1.25rem;
+    } 
+    .btn {
+        border: solid var(--border-color) 2px;
+        font-family: var(--btn-font);
+        border-radius: 2rem;
+        font-size: 1rem;
+        padding: .7rem 1.2rem;
+    }
 }
