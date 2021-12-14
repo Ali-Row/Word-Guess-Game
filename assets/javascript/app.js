@@ -18,7 +18,7 @@ const loseSound = new Audio('assets/audio/lose-sound.wav');
 const buildHiddenWord = () => {
     let currentWord = words[wordIndex];
     hiddenWord = [];
-    for (each of currentWord) {
+    for (const char of currentWord) {
         hiddenWord.push("_");
     } 
     guessesLeft = hiddenWord.length + 3;
@@ -46,7 +46,7 @@ const nextWord = () => {
 const checkLetter = (letter) => {
     let currentWord = words[wordIndex];
 
-     for (let i in currentWord) {
+     for (const i in currentWord) {
         const char = currentWord[i].toLowerCase();
         const userGuess = letter.toLowerCase();
 
